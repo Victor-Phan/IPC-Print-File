@@ -1,12 +1,10 @@
 #pragma once
-#include <unistd.h>
 #include "service.hpp"
-
 class Server : public Service {
    protected:
-    bool running = false;
    public:
-    Server() : Service(), running(true) {}
+    Server() = default;
+    virtual ~Server() = default;
     bool startServer();
     bool close_queue() {
         return (msgctl(msg_id, IPC_RMID, NULL) == 0);

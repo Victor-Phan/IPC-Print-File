@@ -15,8 +15,10 @@ int main(int argc, char* argv[]) {
         //Check params
         try {
             // send to server
+            char * filename = argv[2];
+            int priority = atoi(argv[3]);
             service = new Client();
-            (static_cast<Client*>(service))->connectClient();
+            (static_cast<Client*>(service))->connectClient(filename,priority);
         } catch (...) {
             printMessage("Please enter a number between 1 and 10 for priority");
             return -1;

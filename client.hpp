@@ -4,5 +4,7 @@ class Client : public Service{
   private:
 
   public:
-    bool connectClient();
+    Client() = default;
+    virtual ~Client() = default;
+    bool connectClient(char * filename, int priority);
 };
