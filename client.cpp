@@ -13,6 +13,20 @@ bool Client::connectClient(char* filename, int priority) {
     if (open_queue() == -1) {
         return false;
     }
+    // Debugging
+    std::cout << "Msg Type: ";
+    printMessage(file_msg.msg_type);
+    std::cout << "From Process: ";
+    printMessage(file_msg.from_process);
+    std::cout << "Data: ";
+    printMessage(file_msg.msg_data);
+    std::cout << "Data Length: ";
+    printMessage(file_msg.msg_len);
+    std::cout << "Filename: ";
+    printMessage(file_msg.file_name);
+    std::cout << "Priority: ";
+    printMessage(file_msg.priority);
+
     if (send_message(&file_msg) == -1) {
         printMessage("Error Sending.");
         return false;
@@ -25,6 +39,7 @@ bool Client::connectClient(char* filename, int priority) {
         }
         if (recv.msg_len == 0) {
             printMessage("File does not exist on server.");
+            return false;
         } else {
             //create thread to print to screen..?
         }

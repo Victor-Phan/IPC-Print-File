@@ -12,8 +12,11 @@ int Service::open_queue() {
     return qid;
 }
 int Service::send_message(Message *qbuf) {
-    int result;
-    result = msgsnd(msg_id, qbuf, qbuf->msg_len, 0);
+    int result,length;
+    length = sizeof(struct Message);
+    result = msgsnd(msg_id, qbuf, length, 0);
+    std::cout << "Message Structure Size:";
+    printMessage(length);
     if (result == -1)
     {
         printMessage("Failed to send Message");
@@ -23,7 +26,7 @@ int Service::send_message(Message *qbuf) {
 }
 int Service::read_message(long type, Message *qbuf) {
     int result, length;
-    length = sizeof(Message);
+    length = sizeof(struct Message);
     result = msgrcv(msg_id, qbuf, length, type, 0);
     if (result == -1)
     {

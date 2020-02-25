@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     if (argc == 2 && !strcmp(argv[1], "server")) {
         //create server and print id
         service = new Server();
-        (static_cast<Server*>(service))->startServer();
+        (dynamic_cast<Server*>(service))->startServer();
     } else if (argc == 4 && !strcmp(argv[1], "client")) {
         //Check params
         try {
@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
             char * filename = argv[2];
             int priority = atoi(argv[3]);
             service = new Client();
-            (static_cast<Client*>(service))->connectClient(filename,priority);
+            (dynamic_cast<Client*>(service))->connectClient(filename,priority);
         } catch (...) {
             printMessage("Please enter a number between 1 and 10 for priority");
             return -1;

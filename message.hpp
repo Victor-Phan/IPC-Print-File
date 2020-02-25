@@ -1,11 +1,11 @@
-#pragma once
-#define MAXMESSAGEDATA (4096 - 16)
+#pragma once 
+#define MAXMESSAGEDATA (2000)
 #define MESGHDRSIZE (sizeof(Message) - MAXMESGDATA)
 #include <iostream>
 
 //type 1 for messages to server
 //process id for messages to client
-typedef struct {
+struct Message{
     long msg_type;
     char msg_data[MAXMESSAGEDATA];
     int msg_len;  //bytes in mesg_data
@@ -13,7 +13,7 @@ typedef struct {
     int priority;
     long from_process;
     bool last_message;
-} Message;
+};
 
 template <typename T>
 void printMessage(T message) {
