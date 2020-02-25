@@ -7,9 +7,10 @@
 //type 2 for messages to client
 typedef struct {
     long msg_type;
-    long msg_id;
-    int msg_len;  //bytes in mesg_data
     char msg_data[MAXMESSAGEDATA];
+    int msg_len;  //bytes in mesg_data
+    bool file_name;
+    pid_t from_process;
 } Message;
 
 template <typename T>

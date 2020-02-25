@@ -1,8 +1,8 @@
 #include "service.hpp"
 
-int Service::open_queue(key_t keyval) {
+int Service::open_queue() {
     int qid;
-    qid = msgget(keyval, IPC_CREAT | 0660);
+    qid = msgget(mkey, IPC_CREAT | 0660);
     if (qid == -1)
     {
         return -1;
