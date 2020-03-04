@@ -11,7 +11,6 @@ class Service {
   protected:
     bool running = false;
     key_t mkey;
-    pid_t pid;
     long lpid;
     int msg_id;
   public:

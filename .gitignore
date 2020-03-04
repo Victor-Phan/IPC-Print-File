@@ -1,4 +1,9 @@
 .vscode
-*.txt
+cmake-build-debug
+cmake-build-release
+.idea
+31mb.txt
+4mb.txt
+test.txt
 *.o
 *.exe

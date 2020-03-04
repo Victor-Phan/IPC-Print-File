@@ -1,4 +1,5 @@
-CC=g++ -Wall 
+CC=g++ -Wall -lpthread
+
 
 
 clientserveripc: main.o filehandler.o service.o server.o client.o 
